@@ -11,4 +11,39 @@ public class ControladorMenu {
 		return "PaginaPrincipal";
 	}
 	
+	@RequestMapping("/RegistroFinca")
+	public String RegistroFinca() {
+		return "RegistroFinca";
+	}
+	
+	@RequestMapping("/RegistroEmpleado")
+	public String RegistroEmpleado() {
+		return "RegistroEmpleado";
+	}
+	
+	@RequestMapping("/ActualizarFinca")
+	public String ActualizarFinca() {
+		return "ActualizarFinca";
+	}
+	
+	@RequestMapping("/DesactivarCuenta")
+	public String DesactivarCuenta() {
+		return "DesactivarCuenta";
+	}
+	
+	@RequestMapping("/ListarFincas")
+	public String ListarFincas() {
+		return "ListarFincas";
+	}
+	
+	@RequestMapping("/RegistrarProduccion")
+	public String RegistrarProduccion() {
+		return "RegistrarProduccion";
+	}
+	
+	@RequestMapping("/ListarProduccion")
+	public String ListarProduccion() {
+		return "ListarProduccion";
+	}
+	
 }
