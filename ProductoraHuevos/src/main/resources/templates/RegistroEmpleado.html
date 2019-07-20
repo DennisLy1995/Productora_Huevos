@@ -8,29 +8,47 @@
 <body>
 	<div>
 		<h1>Registro de empleado</h1>
-		
-		<form th:action="@{http://localhost:3377/EmpleadoRegistrado}" th:object=${empleado}
-			method="post">
+
+		<form th:action="@{http://localhost:3377/EmpleadoRegistrado}"
+			th:object=${empleado} method="post">
 			<fieldset>
 
 				<legend> Datos del empleado</legend>
 
 				<ul>
-					<li><span>Cedula: </span><input type="text" th:field="*{cedula}"></li>
-					<li><span>Nombre: </span><input type="text" th:field="*{nombre}"></li>
-					<li><span>Tipo: </span><input type="text" th:field="*{tipo}"></li>
-					<li><span>Condicion: </span><input type="text" th:field="*{condicion}"></li>
-					<li><span>CodigoFinca: </span><input type="text" th:field="*{codigo_Finca}"></li>
+					<li><span>Cedula: </span><input type="text"
+						th:field="*{cedula}"></li>
+					<li><span>Nombre: </span><input type="text"
+						th:field="*{nombre}"></li>
+					<li><span>Rol: </span><select th:field="*{tipo}">
+							<option th:value="'Nada'" disabled>Seleccione</option>
+							<option th:value="'Peon'" th:text="Peon"></option>
+							<option th:value="'Veterinario'" th:text="Veterinario"></option>
+							<option th:value="'Supervisor'" th:text="Supervisor"></option>
+							<option th:value="'Seguridad'" th:text="Seguridad"></option>
+					</select></li>
+					<li><span>Condicion: </span> <select th:field="*{condicion}">
+							<option th:value="'Nada'" disabled>Seleccione</option>
+							<option th:value="'Activo'" th:text="Activo"></option>
+							<option th:value="'Inactivo'" th:text="Inactivo"></option>
+					</select></li>
+					<li><span>CodigoFinca: </span>
+					
+					<select th:field="*{codigo_Finca}">
+							<option th:each="codigo : ${fincas}" th:value="${codigo.codigo_Finca}" th:text="${codigo.codigo_Finca}"></option>		
+					</select>
+					
+					</li>
 				</ul>
 
-				<button type="submit">Registrar Finca</button>
+				<button type="submit">Registrar empleado</button>
 
 			</fieldset>
 
 
 		</form>
-		
-		
+
+
 	</div>
 </body>
 </html>

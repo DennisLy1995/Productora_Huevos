@@ -1,5 +1,6 @@
 package com.productora.huevos.controladores;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -51,7 +52,9 @@ public class Controlador {
 	
 	@RequestMapping("/RegistroEmpleado")
 	public String RegistroEmpleado(Model model) {
+		List<Fincas> fincas = repoF.findAll();
 		model.addAttribute("empleado", new Empleados());
+		model.addAttribute("fincas", fincas);
 		return "RegistroEmpleado";
 	}
 	

@@ -15,9 +15,9 @@ public class Empleados {
 	@Column
 	private String nombre;
 	@Column
-	private int tipo;
+	private String tipo;
 	@Column
-	private int condicion;
+	private String condicion;
 	@Column
 	@JoinColumn
 	private int codigo_Finca;
@@ -25,7 +25,7 @@ public class Empleados {
 	
 	public Empleados() {}
 	
-	public Empleados(int cedula, String nombre, int tipo, int condicion, int codigoFinca) {
+	public Empleados(int cedula, String nombre, String tipo, String condicion, int codigoFinca) {
 		super();
 		this.cedula = cedula;
 		this.nombre = nombre;
@@ -48,16 +48,16 @@ public class Empleados {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public int getTipo() {
+	public String getTipo() {
 		return tipo;
 	}
-	public void setTipo(int tipo) {
+	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	public int getCondicion() {
+	public String getCondicion() {
 		return condicion;
 	}
-	public void setCondicion(int condicion) {
+	public void setCondicion(String condicion) {
 		this.condicion = condicion;
 	}
 	public int getCodigo_Finca() {
