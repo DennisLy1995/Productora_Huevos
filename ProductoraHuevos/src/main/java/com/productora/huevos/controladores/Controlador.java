@@ -100,7 +100,7 @@ public class Controlador {
 	public String EmpleadoActualizada(@Valid Empleados empleado) {
 		try {
 			repoE.save(empleado);
-			return "ListarEmpleados/"+empleado.getCodigo_Finca();
+			return "ListarEmpleados";
 		}catch(Exception e) {
 			System.out.println(e.toString());
 			return "Error";
