@@ -21,6 +21,15 @@ public class Produccion {
 	private int codigoFinca;
 	
 	
+	public Produccion() {}
+	
+	public Produccion(int codigo, int cantidad, Date fecha, int codigoFinca) {
+		super();
+		this.codigo = codigo;
+		this.cantidad = cantidad;
+		this.fecha = fecha;
+		this.codigoFinca = codigoFinca;
+	}
 	//Gets and sets.
 	
 	public int getCodigo() {
@@ -41,10 +50,10 @@ public class Produccion {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public int getCodigoFinca() {
+	public int getCodigo_Finca() {
 		return codigoFinca;
 	}
-	public void setCodigoFinca(int codigoFinca) {
+	public void setCodigo_Finca(int codigoFinca) {
 		this.codigoFinca = codigoFinca;
 	}
 	

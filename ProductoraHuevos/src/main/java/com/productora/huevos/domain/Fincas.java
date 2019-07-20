@@ -11,31 +11,48 @@ public class Fincas {
 
 	
 	@Id
-	private int codigoFinca;
-	@Column(name="nombre")
+	private int codigo_Finca;
+	@Column
 	private String nombre;
-	@Column(name="direccion")
+	@Column
 	private String direccion;
-	@Column(name="telefono")
+	@Column
 	private String telefono;
-	@Column(name="espacioTotal")
+	@Column
 	private int espacioTotal;
-	@Column(name="espacioConstruido")
+	@Column
 	private int espacioConstruido;
-	@Column(name="espacioGallinas")
+	@Column
 	private int espacioGallinas;
-	@Column(name="capacidadBodega")
+	@Column
 	private int capacidadBodega;
 	
 	
 	
+	public Fincas() {}
+	
+	public Fincas(int codigoFinca, String nombre, String direccion, String telefono, int espacioTotal,
+			int espacioConstruido, int espacioGallinas, int capacidadBodega) {
+		super();
+		this.codigo_Finca = codigoFinca;
+		this.nombre = nombre;
+		this.direccion = direccion;
+		this.telefono = telefono;
+		this.espacioTotal = espacioTotal;
+		this.espacioConstruido = espacioConstruido;
+		this.espacioGallinas = espacioGallinas;
+		this.capacidadBodega = capacidadBodega;
+	}
+	
+	
 	//Gets and sets.
 	
-	public int getCodigoFinca() {
-		return codigoFinca;
+	
+	public int getCodigo_Finca() {
+		return codigo_Finca;
 	}
-	public void setCodigoFinca(int codigoFinca) {
-		this.codigoFinca = codigoFinca;
+	public void setCodigo_Finca(int codigoFinca) {
+		this.codigo_Finca = codigoFinca;
 	}
 	public String getNombre() {
 		return nombre;

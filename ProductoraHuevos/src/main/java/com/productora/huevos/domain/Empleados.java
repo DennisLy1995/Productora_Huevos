@@ -3,6 +3,7 @@ package com.productora.huevos.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -11,15 +12,27 @@ public class Empleados {
 
 	@Id
 	private int cedula;
-	@Column(name="nombre")
+	@Column
 	private String nombre;
-	@Column(name="tipo")
+	@Column
 	private int tipo;
-	@Column(name="condicion")
+	@Column
 	private int condicion;
-	@Column(name="codigoFinca")
-	private int codigoFinca;
+	@Column
+	@JoinColumn
+	private int codigo_Finca;
 	
+	
+	public Empleados() {}
+	
+	public Empleados(int cedula, String nombre, int tipo, int condicion, int codigoFinca) {
+		super();
+		this.cedula = cedula;
+		this.nombre = nombre;
+		this.tipo = tipo;
+		this.condicion = condicion;
+		this.codigo_Finca = codigoFinca;
+	}
 	
 	//Gets and sets.
 	
@@ -47,11 +60,11 @@ public class Empleados {
 	public void setCondicion(int condicion) {
 		this.condicion = condicion;
 	}
-	public int getCodigoFinca() {
-		return codigoFinca;
+	public int getCodigo_Finca() {
+		return codigo_Finca;
 	}
-	public void setCodigoFinca(int codigoFinca) {
-		this.codigoFinca = codigoFinca;
+	public void setCodigo_Finca(int codigoFinca) {
+		this.codigo_Finca = codigoFinca;
 	}
 	
 	

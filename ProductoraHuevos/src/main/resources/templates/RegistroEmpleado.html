@@ -8,13 +8,29 @@
 <body>
 	<div>
 		<h1>Registro de empleado</h1>
-		<ul>
-			<li><span>Cedula: <input type="text"></span></li>
-			<li><span>Nombre: <input type="text"></span></li>
-			<li><span>Tipo: <input type="text"></span></li>
-			<li><span>Condicion: <input type="text"></span></li>
-			<li><span>CodigoFinca: <input type="text"></span></li>
-		</ul>
+		
+		<form th:action="@{http://localhost:3377/EmpleadoRegistrado}" th:object=${empleado}
+			method="post">
+			<fieldset>
+
+				<legend> Datos del empleado</legend>
+
+				<ul>
+					<li><span>Cedula: </span><input type="text" th:field="*{cedula}"></li>
+					<li><span>Nombre: </span><input type="text" th:field="*{nombre}"></li>
+					<li><span>Tipo: </span><input type="text" th:field="*{tipo}"></li>
+					<li><span>Condicion: </span><input type="text" th:field="*{condicion}"></li>
+					<li><span>CodigoFinca: </span><input type="text" th:field="*{codigo_Finca}"></li>
+				</ul>
+
+				<button type="submit">Registrar Finca</button>
+
+			</fieldset>
+
+
+		</form>
+		
+		
 	</div>
 </body>
 </html>
