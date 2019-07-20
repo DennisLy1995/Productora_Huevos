@@ -8,6 +8,38 @@
 <body>
 	<div>
 		<h1>Actualizar informacion de Finca</h1>
+
+		<form th:action="@{http://localhost:3377/FincaActualizada}"
+			th:object=${finca} method="put">
+			<fieldset>
+
+				<legend> Datos de la Finca</legend>
+
+				<ul>
+					<li><span>codigoFinca: </span><input type="text"
+						th:field="*{codigo_Finca}" ></li>
+					<li><span>Nombre: </span><input type="text"
+						th:field="*{nombre}"></li>
+					<li><span>Direccion: </span><input type="text"
+						th:field="*{direccion}"></li>
+					<li><span>Telefono: </span><input type="text"
+						th:field="*{telefono}"></li>
+					<li><span>Espacio Total: </span><input type="text"
+						th:field="*{espacioTotal}"></li>
+					<li><span>Espacio construido: </span><input type="text"
+						th:field="*{espacioConstruido}"></li>
+					<li><span>Espacio gallinas: </span><input type="text"
+						th:field="*{espacioGallinas}"></li>
+					<li><span>Capacidad bodega: </span><input type="text"
+						th:field="*{capacidadBodega}"></li>
+				</ul>
+
+				<button type="submit">Actualizar Finca</button>
+
+			</fieldset>
+
+
+		</form>
 	</div>
 </body>
 </html>

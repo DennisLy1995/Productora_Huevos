@@ -20,12 +20,12 @@
 					<th>Espacio construido</th>
 					<th>Espacio Gallinas</th>
 					<th>Capacidad Bodegas</th>
+					<th>Edicion</th>
+					<th>Eliminacion</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:if="${fincas.empty}">
-					<td colspan="2">No hay fincas registradas.</td>
-				</tr>
+				
 				<tr th:each="finca : ${fincas}">
 					<td><span th:text="${finca.codigo_Finca}"> </span></td>
 					<td><span th:text="${finca.nombre}"> </span></td>
@@ -35,6 +35,8 @@
 					<td><span th:text="${finca.espacioConstruido}"> </span></td>
 					<td><span th:text="${finca.espacioGallinas}"> </span></td>
 					<td><span th:text="${finca.capacidadBodega}"> </span></td>
+					<td><a th:href="@{/ActualizarFinca/{codigo_Finca}(codigo_Finca=${finca.codigo_Finca})}">Editar</a></td>
+					<td>Eliminar</td>
 				</tr>
 			</tbody>
 		</table>

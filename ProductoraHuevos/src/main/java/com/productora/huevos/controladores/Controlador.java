@@ -1,10 +1,13 @@
 package com.productora.huevos.controladores;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.productora.huevos.domain.Empleados;
@@ -64,9 +67,22 @@ public class Controlador {
 		
 	}
 	
-	@RequestMapping("/ActualizarFinca")
-	public String ActualizarFinca() {
+	@RequestMapping("/ActualizarFinca/{codigo_Finca}")
+	public String ActualizarFinca(Model model, @PathVariable(value="codigo_Finca") int id ) {
+		Optional<Fincas> finca = repoF.findById(id);
+		model.addAttribute("finca", finca);
 		return "ActualizarFinca";
+	}
+	
+	@RequestMapping("/FincaActualizada")
+	public String FincaActualizada(@Valid Fincas finca) {
+		try {
+			repoF.save(finca);
+			return "ListarFincas";
+		}catch(Exception e) {
+			System.out.println(e.toString());
+			return "Error";
+		}
 	}
 	
 	@RequestMapping("/DesactivarCuenta")
