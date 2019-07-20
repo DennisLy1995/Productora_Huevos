@@ -35,7 +35,7 @@
 					<li><span>CodigoFinca: </span>
 					
 					<select th:field="*{codigo_Finca}">
-							<option th:each="codigo : ${fincas}" th:value="${codigo.codigo_Finca}" th:text="${codigo.codigo_Finca}"></option>		
+							<option th:each="codigo : ${fincas}" th:value="${codigo.codigo_Finca}" th:text="${codigo.nombre}"></option>		
 					</select>
 					
 					</li>

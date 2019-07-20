@@ -7,7 +7,31 @@
 </head>
 <body>
 	<div>
-		<h1>Registro de produccion</h1>
+		
+		<form th:action="@{/ProduccionRegistrado}"
+			th:object=${produccion} method="post">
+			<fieldset>
+
+				<legend> Produccion del dia</legend>
+
+				<ul>
+					<li><span>Codigo: </span><input type="text"
+						th:field="*{codigo}"></li>
+					<li><span>Cantidad de huevos: </span><input type="text"
+						th:field="*{cantidad}"></li>
+					<li><span>Fecha: </span><input type="date"
+						th:field="*{fecha}"></li>
+					<li><span>CodigoFinca: </span><input type="date"
+						th:field="*{codigo_Finca}"></li>
+				</ul>
+
+				<button type="submit">Registrar empleado</button>
+
+			</fieldset>
+
+
+		</form>
+		
 	</div>
 </body>
 </html>

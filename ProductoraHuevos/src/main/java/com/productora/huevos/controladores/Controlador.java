@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.productora.huevos.domain.Empleados;
 import com.productora.huevos.domain.Fincas;
+import com.productora.huevos.domain.Produccion;
 import com.productora.huevos.repository.EmpleadosRepository;
 import com.productora.huevos.repository.EmpleadosRepositoryCustom;
 import com.productora.huevos.repository.FincasRepository;
@@ -133,7 +134,8 @@ public class Controlador {
 	
 	
 	@RequestMapping("/RegistrarProduccion")
-	public String RegistrarProduccion() {
+	public String RegistrarProduccion(Model model) {
+		model.addAttribute("produccion", new Produccion());
 		return "RegistrarProduccion";
 	}
 	

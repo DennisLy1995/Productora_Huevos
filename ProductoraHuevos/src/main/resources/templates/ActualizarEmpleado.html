@@ -18,17 +18,17 @@
 				<ul>
 										
 					<li><span>Cedula: </span><input type="text"
-						th:field="*{cedula}" ></li>
+						th:field="*{cedula}" onfocus="this.blur()"></li>
 					<li><span>Nombre: </span><input type="text"
-						th:field="*{nombre}" ></li>
+						th:field="*{nombre}" onfocus="this.blur()"></li>
 					<li><span>Rol: </span><input type="text"
-						th:field="*{tipo}" ></li>
-					<li><span>Condicion: </span><select th:field="*{condicion}">
+						th:field="*{tipo}" onfocus="this.blur()"></li>
+					<li><span>Condicion: </span><select th:field="*{condicion}" >
 							<option th:value="'Activo'" th:text="Activo"></option>
 							<option th:value="'Inactivo'" th:text="Inactivo"></option>
-					</select></li>
+					</select>
 					<li><span>CodigoFinca: </span><input type="text"
-						th:field="*{codigo_Finca}" ></li>
+						th:field="*{codigo_Finca}" onfocus="this.blur()"></li>
 					
 				</ul>
 
