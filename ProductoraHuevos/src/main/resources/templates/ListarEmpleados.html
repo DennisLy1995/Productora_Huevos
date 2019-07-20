@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"></meta>
+<meta http-equiv="Content-Type" content="text/html"></meta>
+<title>Empleados - Listar</title>
+</head>
+<body>
+	<div>
+		<h1>Empleados</h1>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Cedula</th>
+					<th>Nombre</th>
+					<th>Rol</th>
+					<th>Condicion</th>
+					<th>Codigo Finca</th>
+					<th>Edicion</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+				<tr th:each="empleado : ${empleados}">
+					<td><span th:text="${empleado.cedula}"> </span></td>
+					<td><span th:text="${empleado.nombre}"> </span></td>
+					<td><span th:text="${empleado.tipo}"> </span></td>
+					<td><span th:text="${empleado.condicion}"> </span></td>
+					<td><span th:text="${empleado.codigo_Finca}"> </span></td>
+					<td><a th:href="@{/ActualizarEmpleado/{cedula}(cedula=${empleado.cedula})}">Editar</a></td>
+				</tr>
+			</tbody>
+		</table>
+
+
+	</div>
+</body>
+</html>

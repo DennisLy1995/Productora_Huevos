@@ -21,7 +21,7 @@
 					<th>Espacio Gallinas</th>
 					<th>Capacidad Bodegas</th>
 					<th>Edicion</th>
-					<th>Eliminacion</th>
+					<th>Empleados</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -36,7 +36,7 @@
 					<td><span th:text="${finca.espacioGallinas}"> </span></td>
 					<td><span th:text="${finca.capacidadBodega}"> </span></td>
 					<td><a th:href="@{/ActualizarFinca/{codigo_Finca}(codigo_Finca=${finca.codigo_Finca})}">Editar</a></td>
-					<td>Eliminar</td>
+					<td><a th:href="@{/ListarEmpleados/{codigo_Finca}(codigo_Finca=${finca.codigo_Finca})}">Empleados</a></td>
 				</tr>
 			</tbody>
 		</table>

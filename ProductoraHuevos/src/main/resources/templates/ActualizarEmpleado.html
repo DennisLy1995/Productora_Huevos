@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"></meta>
+<meta http-equiv="Content-Type" content="text/html"></meta>
+<title>Empleado - Registro</title>
+</head>
+<body>
+	<div>
+		<h1>Activar/Desactivar empleado</h1>
+
+		<form th:action="@{http://localhost:3377/EmpleadoActualizado}"
+			th:object=${empleado} method="put">
+			<fieldset>
+
+				<legend> Datos del empleado</legend>
+
+				<ul>
+										
+					<li><span>Cedula: </span><input type="text"
+						th:field="*{cedula}" disabled ></li>
+					<li><span>Nombre: </span><input type="text"
+						th:field="*{nombre}" disabled></li>
+					<li><span>Rol: </span><input type="text"
+						th:field="*{tipo}" disabled></li>
+					<li><span>Condicion: </span><select th:field="*{condicion}">
+							<option th:value="'Activo'" th:text="Activo"></option>
+							<option th:value="'Inactivo'" th:text="Inactivo"></option>
+					</select></li>
+					<li><span>CodigoFinca: </span><input type="text"
+						th:field="*{codigo_Finca}" disabled></li>
+					
+				</ul>
+
+				<button type="submit">Actualizar</button>
+
+			</fieldset>
+
+
+		</form>
+
+
+	</div>
+</body>
+</html>
