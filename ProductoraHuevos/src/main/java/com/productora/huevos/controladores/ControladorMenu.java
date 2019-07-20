@@ -12,7 +12,7 @@ public class ControladorMenu {
 	}
 	
 	@RequestMapping("/RegistroFinca")
-	public String RegistroFinca() {
+	public String RegistroFinca(){
 		return "RegistroFinca";
 	}
 	
