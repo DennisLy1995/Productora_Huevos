@@ -5,7 +5,6 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.productora.huevos.domain.Empleados;
@@ -20,7 +19,9 @@ public class Controlador {
 	
 	@Autowired
 	private EmpleadosRepository repoE;
+	@Autowired
 	private FincasRepository repoF;
+	@Autowired
 	private ProduccionRepository repoP;
 
 	@RequestMapping("/index")
@@ -35,9 +36,14 @@ public class Controlador {
 	}
 	
 	@RequestMapping("/FincaRegistrada")
-	public String FincaRegistrada(@Valid Fincas finca, BindingResult result) {
-		repoF.saveAndFlush(finca);
-		return "FincaRegistrada";
+	public String FincaRegistrada(@Valid Fincas finca) {
+		try {
+			repoF.save(finca);
+			return "FincaRegistrada";
+		}catch(Exception e) {
+			System.out.println(e.toString());
+			return "Error";
+		}
 	}
 	
 	@RequestMapping("/RegistroEmpleado")
@@ -48,8 +54,14 @@ public class Controlador {
 	
 	@RequestMapping("/EmpleadoRegistrado")
 	public String EmpleadoRegistrado(@Valid Empleados empleado) {
-		repoE.save(empleado);
-		return "EmpleadoRegistrado";
+		try {
+			repoE.save(empleado);
+			return "EmpleadoRegistrado";
+		}catch(Exception e) {
+			System.out.println(e.toString());
+			return "Error";
+		}
+		
 	}
 	
 	@RequestMapping("/ActualizarFinca")
@@ -63,7 +75,8 @@ public class Controlador {
 	}
 	
 	@RequestMapping("/ListarFincas")
-	public String ListarFincas() {
+	public String ListarFincas(Model model) {
+		model.addAttribute("fincas", repoF.findAll());
 		return "ListarFincas";
 	}
 	

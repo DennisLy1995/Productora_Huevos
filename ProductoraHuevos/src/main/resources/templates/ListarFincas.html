@@ -8,6 +8,38 @@
 <body>
 	<div>
 		<h1>Fincas</h1>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Codigo Finca</th>
+					<th>Nombre</th>
+					<th>Direccion</th>
+					<th>Telefono</th>
+					<th>Espacio Total</th>
+					<th>Espacio construido</th>
+					<th>Espacio Gallinas</th>
+					<th>Capacidad Bodegas</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:if="${fincas.empty}">
+					<td colspan="2">No hay fincas registradas.</td>
+				</tr>
+				<tr th:each="finca : ${fincas}">
+					<td><span th:text="${finca.codigo_Finca}"> </span></td>
+					<td><span th:text="${finca.nombre}"> </span></td>
+					<td><span th:text="${finca.direccion}"> </span></td>
+					<td><span th:text="${finca.telefono}"> </span></td>
+					<td><span th:text="${finca.espacioTotal}"> </span></td>
+					<td><span th:text="${finca.espacioConstruido}"> </span></td>
+					<td><span th:text="${finca.espacioGallinas}"> </span></td>
+					<td><span th:text="${finca.capacidadBodega}"> </span></td>
+				</tr>
+			</tbody>
+		</table>
+
+
 	</div>
 </body>
 </html>
