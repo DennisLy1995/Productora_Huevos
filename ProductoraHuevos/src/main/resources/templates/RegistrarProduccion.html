@@ -21,8 +21,13 @@
 						th:field="*{cantidad}"></li>
 					<li><span>Fecha: </span><input type="date"
 						th:field="*{fecha}"></li>
-					<li><span>CodigoFinca: </span><input type="date"
-						th:field="*{codigo_Finca}"></li>
+					<li><span>Finca: </span>
+					
+					<select th:field="*{codigo_Finca}">
+							<option th:each="codigo : ${fincas}" th:value="${codigo.codigo_Finca}" th:text="${codigo.nombre}"></option>		
+					</select>
+					
+					</li>
 				</ul>
 
 				<button type="submit">Registrar empleado</button>

@@ -1,11 +1,13 @@
 package com.productora.huevos.domain;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="Producciondiaria")
@@ -17,9 +19,16 @@ public class Produccion {
 	private int cantidad;
 	@Column(name="fecha")
 	private Date fecha;
-	@Column(name="codigoFinca")
-	private int codigoFinca;
+	@Column(name="codigo_Finca")
+	private int codigo_Finca;
 	
+	
+	@Transient
+	private SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+
+	public String getCreatedAsShort() {
+	return format.format(fecha);
+	}
 	
 	public Produccion() {}
 	
@@ -28,7 +37,7 @@ public class Produccion {
 		this.codigo = codigo;
 		this.cantidad = cantidad;
 		this.fecha = fecha;
-		this.codigoFinca = codigoFinca;
+		this.codigo_Finca = codigoFinca;
 	}
 	//Gets and sets.
 	
@@ -51,10 +60,10 @@ public class Produccion {
 		this.fecha = fecha;
 	}
 	public int getCodigo_Finca() {
-		return codigoFinca;
+		return codigo_Finca;
 	}
 	public void setCodigo_Finca(int codigoFinca) {
-		this.codigoFinca = codigoFinca;
+		this.codigo_Finca = codigoFinca;
 	}
 	
 	

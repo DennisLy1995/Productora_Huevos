@@ -36,7 +36,10 @@ public class Controlador {
 	
 	@RequestMapping("/RegistroFinca")
 	public String RegistroFinca(Model model){
-		model.addAttribute("finca", new Fincas());
+		List<Fincas> fincas = repoF.findAll();
+		Fincas finca = new Fincas();
+		finca.setCodigo_Finca(fincas.size()+1);
+		model.addAttribute("finca", finca);
 		return "RegistroFinca";
 	}
 	
@@ -129,19 +132,32 @@ public class Controlador {
 			model.addAttribute("empleados", repoE.findAll());
 			return "ListarEmpleados";
 		}
-		
 	}
 	
 	
 	@RequestMapping("/RegistrarProduccion")
 	public String RegistrarProduccion(Model model) {
+		List<Fincas> fincas = repoF.findAll();
 		model.addAttribute("produccion", new Produccion());
+		model.addAttribute("fincas", fincas);
 		return "RegistrarProduccion";
 	}
 	
 	@RequestMapping("/ListarProduccion")
 	public String ListarProduccion() {
 		return "ListarProduccion";
+	}
+	
+	@RequestMapping("/ProduccionRegistrado")
+	public String ProduccionRegistrado(@Valid Produccion produccion) {
+		try {
+			repoP.save(produccion);
+			return "PaginaPrincipal";
+		}catch(Exception e) {
+			System.out.println(e.toString());
+			return "Error";
+		}
+		
 	}
 	
 }
