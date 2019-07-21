@@ -1,5 +1,7 @@
 package com.productora.huevos.controladores;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import javax.validation.Valid;
@@ -125,26 +127,40 @@ public class Controlador {
 	
 	@RequestMapping("/ListarEmpleados/{codigo_Finca}")
 	public String ListarEmpleados(Model model, @PathVariable(value="codigo_Finca") int id) {
-		try {
-			model.addAttribute("empleados", repoEC.findByCodigoFinca(id));
-			return "ListarEmpleados";
-		}catch (Exception e){
-			model.addAttribute("empleados", repoE.findAll());
-			return "ListarEmpleados";
+		List<Empleados> lista = repoE.findAll();
+		List<Empleados> listaRetorno = new ArrayList<Empleados>();
+		for(Empleados e: lista) {
+			if(e.getCodigo_Finca() == id && e.getCondicion().equals("Activo")) {
+				listaRetorno.add(e);
+			}
 		}
+		model.addAttribute("empleados", listaRetorno);
+		return "ListarEmpleados";
 	}
 	
 	
 	@RequestMapping("/RegistrarProduccion")
 	public String RegistrarProduccion(Model model) {
 		List<Fincas> fincas = repoF.findAll();
-		model.addAttribute("produccion", new Produccion());
+		Produccion produccion = new Produccion();
+		produccion.setCodigo(repoP.findAll().size()+1);
+		model.addAttribute("produccion", produccion);
 		model.addAttribute("fincas", fincas);
 		return "RegistrarProduccion";
 	}
 	
 	@RequestMapping("/ListarProduccion")
-	public String ListarProduccion() {
+	public String ListarProduccion(Model model) {
+		
+		List<Produccion> registros = repoP.findAll();
+		List<Produccion> registrosRetorno = new ArrayList<Produccion>();
+
+		for(Produccion p: registros) {
+			if(p.getFecha().getMonth() == (new Date()).getMonth()) {
+				registrosRetorno.add(p);
+			}
+		}
+		model.addAttribute("registros", registrosRetorno);
 		return "ListarProduccion";
 	}
 	

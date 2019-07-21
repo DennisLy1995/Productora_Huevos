@@ -3,11 +3,32 @@
 <head>
 <meta charset="utf-8"></meta>
 <meta http-equiv="Content-Type" content="text/html"></meta>
-<title>Produccion - Listar</title>
+<title>Fincas - Listar</title>
 </head>
 <body>
 	<div>
-		<h1>Record de produccion</h1>
+		<h1>Record de produccion de Huevos Ticos, Huevos Frescos</h1>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Codigo</th>
+					<th>Cantidad de huevos</th>
+					<th>Fecha de recolleccion</th>
+					<th>Finca</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+				<tr th:each="colecta : ${registros}">
+					<td><span th:text="${colecta.codigo}"> </span></td>
+					<td><span th:text="${colecta.cantidad}"> </span></td>
+					<td><span th:text="${colecta.fecha}"> </span></td>
+					<td><span th:text="${colecta.codigo_Finca}"> </span></td>
+				</tr>
+			</tbody>
+		</table>
+
 	</div>
 </body>
 </html>
