@@ -191,12 +191,37 @@ public class Controlador {
 		return "RegistrarProduccion";
 	}
 	
-	@RequestMapping("/ListarProduccion")
-	public String ListarProduccion(Model model) {
+	
+	@RequestMapping("/BuscarProduccion")
+	public String ListarProduccionBusqueda(Model model) {
+		List<Fincas> fincas = repoF.findAll();
+		fincas.add(new Fincas(-1, "Todas las fincas", "N/A", "0", 0,0,0,0));
+		model.addAttribute("fincas", fincas);
+		model.addAttribute("nombre", "Default");
+		model.addAttribute("codigo_finca", 1);
+		return "/BuscarProduccion";
+	}
+	
+	
+	@RequestMapping("/ListarProduccion/{codigoFinca}")
+	public String ListarProduccion(Model model, @PathVariable(value="codigoFinca") int id) {
 		
 		List<Produccion> registros = repoP.findAll();
 		List<Produccion> registrosRetorno = new ArrayList<Produccion>();
-
+		
+		if(id == -1) {
+			
+		}else {
+			
+			for(Produccion e: registros) {
+				if(e.getCodigo_Finca() == id) {
+					registrosRetorno.add(e);
+				}
+			}
+			registros = registrosRetorno;
+			registrosRetorno = new ArrayList<Produccion>();
+		}
+		
 		for(Produccion p: registros) {
 			if(p.getFecha().getMonth() == (new Date()).getMonth()) {
 				registrosRetorno.add(p);
