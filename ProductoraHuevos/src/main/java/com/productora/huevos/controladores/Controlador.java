@@ -139,6 +139,48 @@ public class Controlador {
 	}
 	
 	
+	@RequestMapping("/BuscarEmpleado")
+	public String ListarEmpleadosBusqueda(Model model) {
+		List<Fincas> fincas = repoF.findAll();
+		fincas.add(new Fincas(-1, "Todas las fincas", "N/A", "0", 0,0,0,0));
+		model.addAttribute("fincas", fincas);
+		model.addAttribute("nombre", "Default");
+		model.addAttribute("codigo_finca", 1);
+		return "/BuscarEmpleado";
+	}
+	
+	
+	@RequestMapping("/ListarEmpleadosBusqueda/{nombre}/{codigoFinca}")
+	public String ListarEmpleadosBusqueda(Model model, @PathVariable(value="nombre") String nombre, @PathVariable(value="codigoFinca") int id) {
+		
+		List<Empleados> lista;
+		
+		if(id == -1) {
+			lista = repoE.findAll();
+		}else {
+			lista = repoE.findAll();
+			List<Empleados> listaTemp = new ArrayList();
+			
+			for(Empleados e: lista) {
+				if(e.getCodigo_Finca() == id) {
+					listaTemp.add(e);
+				}
+			}			
+			
+			lista = listaTemp;
+		}
+		
+		List<Empleados> listaRetorno = new ArrayList<Empleados>();
+		for(Empleados e: lista) {
+			if(e.getNombre().equalsIgnoreCase(nombre)&& e.getCondicion().equals("Activo")) {
+				listaRetorno.add(e);
+			}
+		}
+		model.addAttribute("empleados", listaRetorno);
+		return "/ListarEmpleadosBusqueda";
+	}
+	
+	
 	@RequestMapping("/RegistrarProduccion")
 	public String RegistrarProduccion(Model model) {
 		List<Fincas> fincas = repoF.findAll();

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"></meta>
+<meta http-equiv="Content-Type" content="text/html"></meta>
+<title>Buscar Empleado</title>
+</head>
+<body>
+	<div>
+		<h1>Buscar Empleado</h1>
+
+		<form th:action="@{http://localhost:3377/ListarEmpleadosBusqueda/Pepe/3}" >
+			<fieldset>
+
+				<legend> Datos de la Finca</legend>
+
+				<ul>
+					<li><span>Nombre: </span><input id="nombre" type="text"></li>
+					
+					<li><span>Finca: </span>
+					
+					<select >
+							<option id="codigo" th:each="codigo : ${fincas}" th:value="${codigo.codigo_Finca}" th:text="${codigo.nombre}"></option>		
+					</select>
+					
+					</li>
+					
+				</ul>
+
+				<button type=submit>Buscar empleado</button>
+<!-- {nombre}(nombre=${nombre})/{codigoFinca}(codigoFinca=${finca.codigoFinca}) -->
+			</fieldset>
+
+
+		</form>
+	</div>
+</body>
+</html>
